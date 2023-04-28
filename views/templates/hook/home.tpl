@@ -1,3 +1,6 @@
 <div class="row">
-    <img src="https://placehold.co/820x350" />
+    <div class="col-lg-12">
+        <img src="https://placehold.co/1920x350" class="multipurpose-img"/>
+    </div>
+    
 </div>

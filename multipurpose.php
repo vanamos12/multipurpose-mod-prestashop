@@ -24,4 +24,14 @@ class Multipurpose extends Module {
 
         return $this->display(__FILE__, 'views/templates/hook/home.tpl');
     }
+
+    public function hookHeader(){
+        $this->context->controller->addCSS(array(
+            $this->_path.'views/css/multipurpose.css'
+        ));
+
+        $this->context->controller->addJS(array(
+            $this->_path.'views/js/multipurpose.js'
+        ));
+    }
 }
