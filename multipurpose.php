@@ -20,6 +20,8 @@ class Multipurpose extends Module {
     }
     
     public function hookDisplayHome(){
-        
+        ///eturn 'This is the no random text from the module multipurpose.';
+
+        return $this->display(__FILE__, 'views/templates/hook/home.tpl');
     }
 }
