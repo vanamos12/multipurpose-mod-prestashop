@@ -22,7 +22,9 @@ class Multipurpose extends Module {
     
     public function hookDisplayHome(){
         ///eturn 'This is the no random text from the module multipurpose.';
-
+        $this->context->smarty->assign(array(
+            'MULTIPURPOSE_STR' => Configuration::get('MULTIPURPOSE_STR')
+        ));
         return $this->display(__FILE__, 'views/templates/hook/home.tpl');
     }
 
@@ -37,6 +39,13 @@ class Multipurpose extends Module {
     }
 
     public function getContent(){
+        if (Tools::isSubmit('savemultipurposetesting')){
+            $name = Tools::getValue('print');
+            Configuration::updateValue('MULTIPURPOSE_STR', $name);
+        }
+        $this->context->smarty->assign(array(
+            'MULTIPURPOSE_STR' => Configuration::get('MULTIPURPOSE_STR')
+        ));
         return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
     }
 }
