@@ -5,6 +5,7 @@ class Multipurpose extends Module {
         $this->name = 'multipurpose';
         $this->author = 'POKA TCHONENG Hermann';
         $this->version = '1.0.0';
+        $this->bootstrap = true;
         parent::__construct();
         $this->displayName = $this->l('Multipurpose');
         $this->description = $this->l('This is part of prestashop module developement tutorial');
@@ -33,5 +34,9 @@ class Multipurpose extends Module {
         $this->context->controller->addJS(array(
             $this->_path.'views/js/multipurpose.js'
         ));
+    }
+
+    public function getContent(){
+        return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
     }
 }
