@@ -11,6 +11,12 @@ class Multipurpose extends Module {
         $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => '1.7.99.0');
     }
 
-    
+    public function install(){
+       return parent::install(); 
+    }
+
+    public function uninstall(){
+        return parent::uninstall();
+    }
     
 }
