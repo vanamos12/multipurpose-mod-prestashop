@@ -14,7 +14,7 @@ class Multipurpose extends Module {
 
     public function install(){
        include_once($this->local_path.'sql/install.php');
-       return parent::install() && $this->registerHook('displayHome') && $this->createTabLink(); 
+       return parent::install() && $this->registerHook('displayHome') && $this->registerHook('header') && $this->createTabLink(); 
     }
 
     public function uninstall(){
@@ -31,6 +31,10 @@ class Multipurpose extends Module {
     }
 
     public function hookHeader(){
+        Media::addJsDef(array(
+            'mp_ajax' => $this->_path.'/ajax.php'
+        ));
+
         $this->context->controller->addCSS(array(
             $this->_path.'views/css/multipurpose.css'
         ));

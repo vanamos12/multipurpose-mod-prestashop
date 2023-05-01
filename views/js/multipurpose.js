@@ -1,3 +1,12 @@
 $(document).ready(function(){
-    alert('multipurpose.js has been loaded.');
+   $.ajax({
+    url: mp_ajax,
+    data: {
+
+    },
+    method: 'POST',
+    success: function(data){
+        $('#random_number').html(data);
+    }
+   });
 });
