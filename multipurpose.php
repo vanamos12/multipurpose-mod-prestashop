@@ -13,10 +13,12 @@ class Multipurpose extends Module {
     }
 
     public function install(){
-       return parent::install() && $this->registerHook('displayHome'); 
+       include_once($this->local_path.'sql/install.php');
+       return parent::install() && $this->registerHook('displayHome') && $this->createTabLink(); 
     }
 
     public function uninstall(){
+        include_once($this->local_path.'sql/uninstall.php');
         return parent::uninstall();
     }
     
@@ -47,5 +49,17 @@ class Multipurpose extends Module {
             'MULTIPURPOSE_STR' => Configuration::get('MULTIPURPOSE_STR')
         ));
         return $this->display(__FILE__, 'views/templates/admin/configure.tpl');
+    }
+
+    public function createTabLink(){
+        $tab = new Tab;
+        foreach(Language::getLanguages() as $lang){
+            $tab->name[$lang['id_lang']] = $this->l('Origin');
+        }
+        $tab->class_name = 'AdminOrigin';
+        $tab->module = $this->name;
+        $tab->id_parent = 0;
+        $tab->add();
+        return true;
     }
 }
